@@ -21,4 +21,6 @@ ActiveRecord::Schema.define(version: 20150919181734) do
     t.string   "password"
   end
 
+  add_index "administrators", ["email"], name: "index_administrators_on_email", unique: true
+
 end
