@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84e0e60b-e251-4b99-9d3c-3232d360e6fb" name="Default" comment="add custom.css.scss&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20150919181734_add_password_to_administrators.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/administrator.rb" afterPath="$PROJECT_DIR$/app/models/administrator.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/administrator_test.rb" afterPath="$PROJECT_DIR$/test/models/administrator_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/administrators.yml" afterPath="$PROJECT_DIR$/test/fixtures/administrators.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="84e0e60b-e251-4b99-9d3c-3232d360e6fb" name="Default" comment="add custom.css.scss&#10;" />
     <ignored path="LibSys.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/components/" />
