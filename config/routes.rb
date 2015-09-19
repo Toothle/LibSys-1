@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # get 'books/new'
-  get 'addbook' => 'books#new'   #具名路由 让route产生addbook_path
 
   root 'static_pages#home'
 
@@ -8,11 +6,13 @@ Rails.application.routes.draw do
 
   get  'about'=>  'static_pages#about'
 
-  get   'contact'  =>    'static_pages#contact'
-   
+  get 'contact' =>'static_pages#contact'
+
   resources :members
   get 'signup'  => 'members#new'
 
+  resources :books
+  get 'addbook' => 'books#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
