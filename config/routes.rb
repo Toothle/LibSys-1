@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get 'books/new'
+  get 'addbook' => 'books#new'   #具名路由 让route产生addbook_path
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
