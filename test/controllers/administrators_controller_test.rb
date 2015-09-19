@@ -6,4 +6,6 @@ class AdministratorsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+
+
 end
