@@ -4,7 +4,8 @@ class AdministratorTest < ActiveSupport::TestCase
 
   def setup
     @administrator = Administrator.new(name: "Example admin",
-                                       email: "admin@example.com")
+                                       email: "admin@example.com",
+                                       password: "foobar")
   end
 
   test "should be valid" do
@@ -40,7 +41,6 @@ class AdministratorTest < ActiveSupport::TestCase
     end
   end
 
-=begin
   test "email validation should reject invalid addresses" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                                foo@bar_baz.com foo@bar+baz.com]
@@ -49,7 +49,19 @@ class AdministratorTest < ActiveSupport::TestCase
       assert_not @administrator.valid?, "#{invalid_address.inspect} should be invalid"
     end
   end
-=end
+
+  test "email addresses should be unique" do
+    duplicate_administrator = @administrator.dup
+    duplicate_administrator.email = @administrator.email.upcase
+    @administrator.save
+    assert_not duplicate_administrator.valid?
+  end
+
+
+  test "password should have a minimum length" do
+    @administrator.password = "a" * 5
+    assert_not @administrator.valid?
+  end
 
 
 end
