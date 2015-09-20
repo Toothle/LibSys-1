@@ -1,4 +1,7 @@
 class AdministratorsController < ApplicationController
+
+  before_action :logged_in_administrator, only: [:edit, :update]
+
   def new
     @administrator = Administrator.new
   end
@@ -34,10 +37,28 @@ class AdministratorsController < ApplicationController
     @administrator = Administrator.find(params[:id])
   end
 
-  private
-  def administrator_params
-    params.require(:administrator).permit(:name, :email, :password,
-                                         )
+
+  def logged_in_administrator
+    unless log_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
+
+  def correct_user
+    @administrator = Administrator.find(params[:id])
+    redirect_to(root_url) unless @administrator == current_administrator
+  end
+
+
+
+   private
+  def administrator_params
+    params.require(:administrator).permit(:name, :email, :password)
+  end
+
+
+
+
 
 end
