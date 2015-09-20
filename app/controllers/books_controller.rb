@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:success] = "Successfully add a book"
+      flash[:success] = "Book added"
       redirect_to @book
     else
       render 'new'
@@ -18,11 +18,21 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.paginate(page: params[:page])
+    @book = Book.paginate(page: params[:page])
   end
 
   def edit
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(book_params)
+      flash[:success] = "Book updated"
+      redirect_to @book
+    else
+      render 'edit'
+    end
   end
 
   def book_params
