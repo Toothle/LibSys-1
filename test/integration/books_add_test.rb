@@ -1,16 +1,18 @@
 require 'test_helper'
 
 class BooksAddTest < ActionDispatch::IntegrationTest
-  # test "invalid signup information" do
-  #   get signup_path
-  #   assert_no_difference 'User.count' do
-  #     post users_path, user: { name: "",
-  #                              email: "user@invalid",
-  #                              password: "foo",
-  #                              password_confirmation: "bar" }
-  #   end
-  #   assert_template 'users/new'
-  # end
+
+  test "invalid signup information" do
+    get addbook_path
+    assert_no_difference 'Book.count' do
+      post books_path, book: { ISBN: "",
+                               author: "a",
+                               title: "b",
+                               descrpition: "c",
+                               status: "d"}
+    end
+    assert_template 'books/new'
+  end
 
   test "valid add book information" do
     get addbook_path
@@ -22,7 +24,7 @@ class BooksAddTest < ActionDispatch::IntegrationTest
     status = "status"
 
     assert_difference 'Book.count', 1 do
-      post_via_redirect books_path, user: { ISBN: ISBN,
+      post_via_redirect books_path, book: { ISBN: ISBN,
                                             author: author,
                                             title: title,
                                             description: description,
