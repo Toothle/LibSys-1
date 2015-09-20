@@ -12,4 +12,7 @@ module Se2sionsHelper
     session.delete(:member_id)
     @current_member = nil
   end
+  def current_member?(member)
+    member == current_member 
+  end
 end
