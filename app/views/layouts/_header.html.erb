@@ -15,7 +15,14 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", current_administrator %></li>
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_administrator_path(current_administrator) %></li>
+
+                <li><%= link_to "ManageAdmins", '#' %></li>
+                <li><%= link_to "List Books", '#' %></li>
+                <li><%= link_to "Add Books", '#' %></li>
+                <li><%= link_to "List members", '#' %></li>
+                <li><%= link_to "Notification", '#' %></li>
+
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Log out", logout_path, method: "delete" %>
