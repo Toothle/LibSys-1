@@ -17,6 +17,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def index
+    @books = Book.paginate(page: params[:page])
+  end
+
+  def edit
+    @books = Book.find(params[:id])
+  end
+
   def book_params
     params.require(:book).permit(:ISBN, :title, :author, :description, :status)
   end
