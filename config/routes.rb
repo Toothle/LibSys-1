@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'se2sions/new'
+
   root 'static_pages#home'
 
   get 'help' => 'static_pages#help'
@@ -10,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :members
   get 'signup'  => 'members#new'
+  get    'login'   => 'se2sions#new'
+  post   'login'   => 'se2sions#create'
+  delete 'logout'  => 'se2sions#destroy'
 
   # get '/books/:id', to: 'books#show'
   delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
