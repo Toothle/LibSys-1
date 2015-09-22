@@ -14,4 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
+/.idea/*
 /tmp
+/.idea/*
+
+
+# Ignore Spring files.
+/spring/*.pid

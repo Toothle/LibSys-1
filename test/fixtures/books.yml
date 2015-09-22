@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hma:
+  ISBN: "1-84356-028-3"
+  title: "A book"
+  author: "H.Ma"
+  description: "Wow"
+  status: "check out"
+
+#two:
+#  ISBN: MyString
+#  title: MyString
+#  description: MyString
+#  author: MyString
+#  status: MyString

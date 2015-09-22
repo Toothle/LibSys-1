@@ -1,0 +1,19 @@
+<% provide(:title, @book.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%=@book.ISBN%>
+        <%=@book.author%>
+        <%=@book.title%>
+        <%=@book.description%>
+        <%=@book.status%>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<li>
+  <%= link_to "delete", @book, method: :delete,
+              data: { confirm: "You sure?" } %>
+</li>
