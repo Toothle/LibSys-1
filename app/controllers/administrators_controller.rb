@@ -38,12 +38,6 @@ class AdministratorsController < ApplicationController
   end
 
 
-  def logged_in_administrator
-    unless log_in?
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
 
   def correct_user
     @administrator = Administrator.find(params[:id])
@@ -57,6 +51,12 @@ class AdministratorsController < ApplicationController
     params.require(:administrator).permit(:name, :email, :password)
   end
 
+  def logged_in_administrator
+    unless log_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 
 
 
