@@ -18,7 +18,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.paginate(page: params[:page])
+    @books = Book.paginate(page: params[:page])
   end
 
   def edit
@@ -33,6 +33,18 @@ class BooksController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    flash[:success] = "Book deleted"
+    redirect_to books_url
+  end
+
+  def show_and_destroy
+    Book.find(params[:id]).destroy
+    flash[:success] = "Book deleted"
+    redirect_to books_url
   end
 
   def book_params

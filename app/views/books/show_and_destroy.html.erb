@@ -8,13 +8,12 @@
         <%=@book.title%>
         <%=@book.description%>
         <%=@book.status%>
-
-        <li>
-          <%= link_to "delete", @book, method: :delete,
-                      data: { confirm: "You sure?" } %>
-        </li>
-
       </h1>
     </section>
   </aside>
 </div>
+
+<li>
+  <%= link_to "delete", @book, method: :delete,
+              data: { confirm: "You sure?" } %>
+</li>
