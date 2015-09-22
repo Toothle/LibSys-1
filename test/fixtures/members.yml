@@ -1,10 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-michael:
-  name: Michael Example
-  email: michael@example.com
-  password: 123456
-archer:
-  name: Sterling Archer
-  email: duchess@example.gov
-  password: 1234567
-
+#empty
