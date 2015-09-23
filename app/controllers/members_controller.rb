@@ -64,4 +64,5 @@ class MembersController < ApplicationController
     redirect_to(root_url) unless current_member.admin?
   end
 
+
 end
