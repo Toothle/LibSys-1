@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def new
-    @book = Book.new
+    @book = Book.new()
   end
 
   def show
@@ -36,12 +36,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "Book deleted"
-    redirect_to books_url
-  end
-
-  def show_and_destroy
     Book.find(params[:id]).destroy
     flash[:success] = "Book deleted"
     redirect_to books_url

@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   get  'members/members_path' => 'members#index'
   resources :members
 
-   get '/books/:id', to: 'books#show'
-  delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
+  get 'searchbook' => 'members#find_book'
+
+  # get '/books/:id', to: 'books#show'
+  # delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
   resources :books
 
 

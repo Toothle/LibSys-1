@@ -62,5 +62,11 @@ class MembersController < ApplicationController
   def admin_member
     redirect_to(root_url) unless current_member.admin?
   end
+  def find_book
+    # @book = Book.search(params[:search])
+    if params[:search]
+      @books = Book.where(:status => params[:search])
+    end
+  end
 
 end

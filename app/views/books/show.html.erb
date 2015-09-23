@@ -2,19 +2,40 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%=@book.ISBN%>
-        <%=@book.author%>
-        <%=@book.title%>
-        <%=@book.description%>
-        <%=@book.status%>
 
-        <li>
+        <p>
+        <strong>ISBN:</strong>
+        <%=@book.ISBN%>
+      </p>
+
+        <p>
+          <strong>Title:</strong>
+          <%=@book.title%>
+        </p>
+
+        <p>
+          <strong>Author:</strong>
+          <%=@book.author%>
+        </p>
+
+        <p>
+          <strong>Description:</strong>
+          <%=@book.description%>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <%=@book.status%>
+        </p>
+
+        <p>
           <%= link_to "delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
-        </li>
+          <%= link_to 'Edit', edit_book_path(@book) %>
+          <%= link_to 'Back', books_path %>
+        </p>
 
-      </h1>
     </section>
   </aside>
 </div>
+
