@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :books
 
 
-  # get 'addbook' => 'books#new'
+  get 'addbook' => 'books#new'
   # delete 'show_and_destroy' => '/books/:id/books#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.

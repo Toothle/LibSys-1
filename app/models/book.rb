@@ -2,6 +2,7 @@ class Book < ActiveRecord::Base
   validates(:ISBN, presence: true, uniqueness: true)
   validates(:title, presence: true)
   validates(:author, presence: true, length: { maximum: 30 })
-  validates(:status, presence: true)
   validates(:description, length: { maximum: 255 })
+  validates(:status, presence: true)
+  validates(:status, inclusion: {in: ["available","checked out"], message: ": can only be \'available\' or \'checked out\'!"})
 end
