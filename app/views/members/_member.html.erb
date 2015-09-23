@@ -1,18 +1,13 @@
 <li>
 
-  <%= link_to member.name, member %>
+  <%= link_to member.name,member %>
 
-  <% if current_member.admin?  && !current_member?(member)%>
-      | <%= link_to "delete",member, method: :delete,
-                    data: { confirm: "You sure?" } %>
-
-
-
-
-
-
-
-
+  <%if current_member.admin?&& !current_member?(member) %>
+      <%= link_to "delete",non_pre, method: :delete,
+                  data: { confirm: "You sure?" } %>
   <% end %>
+
+
+
 
 </li>
