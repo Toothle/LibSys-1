@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   post   'login'   => 'se2sions#create'
   delete 'logout'  => 'se2sions#destroy'
   get  'members_path' => 'members#index'
-  # get '/books/:id', to: 'books#show'
+
+
+   get '/books/:id', to: 'books#show'
   delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
   resources :books
 

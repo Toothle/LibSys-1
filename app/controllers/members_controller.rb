@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :logged_in_member, only: [:edit, :update]
+  before_action :logged_in_member, only: [:index, :edit, :update, :destroy]
   before_action :correct_member, only: [:edit, :update]
   def new
     @member = Member.new
@@ -53,6 +53,11 @@ class MembersController < ApplicationController
     @members = Member.paginate(page: params[:page])
   end
 
+  def destroy
+    Member.find(params[:id]).destroy
+    flash[:success] = "Member deleted"
+    redirect_to members_url
+  end
 
 
 end
