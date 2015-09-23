@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   post   'login'   => 'se2sions#create'
   delete 'logout'  => 'se2sions#destroy'
   get  'members_path' => 'members#index'
-
   get  'members/members_path' => 'members#index'
+  get 'add_admin'  => 'members#add_admin'
   resources :members
 
   get 'searchbook' => 'members#find_book'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :books
 
 
-  # get 'addbook' => 'books#new'
+  get 'addbook' => 'books#new'
   # delete 'show_and_destroy' => '/books/:id/books#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
