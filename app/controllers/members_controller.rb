@@ -48,4 +48,11 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
       redirect_to(root_url) unless @member == current_member
   end
+
+  def index
+    @members = Member.paginate(page: params[:page])
+  end
+
+
+
 end
