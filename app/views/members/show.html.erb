@@ -1,1 +1,31 @@
-<%=@member.name%>,<%=@member.email%>
+<h1>Member Page</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <p>
+          <strong>Name:</strong>
+          <%=@member.name%>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%=@member.email%>
+        </p>
+
+        <p>
+          <%= link_to "All books", books_path %>
+        </p>
+
+      <p>
+        <%= link_to "Search books", searchbook_path %>
+      </p>
+      <% if current_member.admin? %>
+        <p>
+           <%= link_to "Add a book", addbook_path %>
+        </p>
+      <% end %>
+
+    </section>
+  </aside>
+</div>

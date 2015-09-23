@@ -2,6 +2,7 @@
 
   <%= link_to member.name,member %>
 
+
   <%if current_member.admin? && !current_member?(member) && !member.pre? %>
       |
       <%= link_to "delete",member, method: :delete,

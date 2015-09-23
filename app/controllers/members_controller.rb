@@ -6,7 +6,6 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
   end
-
   def show
     @member = Member.find(params[:id])
   end
@@ -62,9 +61,15 @@ class MembersController < ApplicationController
     flash[:success] = "Member deleted"
     redirect_to members_url
   end
-
+  
   def admin_member
     redirect_to(root_url) unless current_member.admin?
+  end
+  
+  def find_book
+    if params[:search]
+      @books = Book.where(:status => params[:search])
+    end
   end
 
   def add_admin

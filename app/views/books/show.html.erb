@@ -2,19 +2,55 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
+
+        <p>
+        <strong>ISBN:</strong>
         <%=@book.ISBN%>
-        <%=@book.author%>
-        <%=@book.title%>
-        <%=@book.description%>
-        <%=@book.status%>
+      </p>
 
-        <li>
-          <%= link_to "delete", @book, method: :delete,
+        <p>
+          <strong>Title:</strong>
+          <%=@book.title%>
+        </p>
+
+        <p>
+          <strong>Author:</strong>
+          <%=@book.author%>
+        </p>
+
+        <p>
+          <strong>Description:</strong>
+          <%=@book.description%>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <%=@book.status%>
+        </p>
+
+        <p> 
+          <%if current_member.admin?%>
+             <%= link_to "Delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
-        </li>
+             <%= link_to 'Edit', edit_book_path(@book) %>
+          <%end%>   
+          <% if @book.status == "available" %>
+            <%= link_to 'Checkout','#'%>
+          <%end%>
+          <%= link_to 'Back', books_path %>
+          <%if current_member.admin?&&@book.status=="checked out"%>
+             <p>
+             <%= link_to 'Return it for the Member','#'%>
+             </p>
+          <%end%>
+          <%if current_member.admin? && @book.status == "available"%>
+             <p>
+             <%= link_to 'Check it out for an Member','#'%>
+             </p>
+          <%end%>
+       </p>
 
-      </h1>
     </section>
   </aside>
 </div>
+

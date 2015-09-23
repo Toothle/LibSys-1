@@ -20,12 +20,14 @@ Rails.application.routes.draw do
   get 'add_admin'  => 'members#add_admin'
   resources :members
 
-   get '/books/:id', to: 'books#show'
-  delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
+  get 'searchbook' => 'members#find_book'
+
+  # get '/books/:id', to: 'books#show'
+  # delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
   resources :books
 
 
-  # get 'addbook' => 'books#new'
+  get 'addbook' => 'books#new'
   # delete 'show_and_destroy' => '/books/:id/books#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
