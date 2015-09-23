@@ -14,12 +14,17 @@
         </p>
 
         <p>
-          <%= link_to "Book list", books_path %>
+          <%= link_to "All books", books_path %>
         </p>
 
       <p>
-        <%= link_to "Search book", searchbook_path %>
+        <%= link_to "Search books", searchbook_path %>
       </p>
+      <% if current_member.admin? %>
+        <p>
+           <%= link_to "Add a book", addbook_path %>
+        </p>
+      <% end %>
 
     </section>
   </aside>
