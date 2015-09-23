@@ -3,7 +3,7 @@ require 'test_helper'
 class BooksAddTest < ActionDispatch::IntegrationTest
 
   test "invalid signup information" do
-    get addbook_path
+    get new_book_path
     assert_no_difference 'Book.count' do
       post books_path, book: { ISBN: "",
                                author: "a",
@@ -15,7 +15,7 @@ class BooksAddTest < ActionDispatch::IntegrationTest
   end
 
   test "valid add book information" do
-    get addbook_path
+    get new_book_path
 
     ISBN = "ISBN"
     author = "author"
