@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :logged_in_member, only: [:index, :edit, :update, :destroy]
   before_action :correct_member, only: [:edit, :update]
+  before_action :admin_member, only: :destroy
   def new
     @member = Member.new
   end
@@ -59,5 +60,8 @@ class MembersController < ApplicationController
     redirect_to members_url
   end
 
+  def admin_member
+    redirect_to(root_url) unless current_user.admin?
+  end
 
 end
