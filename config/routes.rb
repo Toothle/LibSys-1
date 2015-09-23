@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get    'login'   => 'se2sions#new'
   post   'login'   => 'se2sions#create'
   delete 'logout'  => 'se2sions#destroy'
-  # get 'searchbook' => 'members#find_book'
+  get 'searchbook' => 'members#find_book'
 
   # get '/books/:id', to: 'books#show'
   # delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'

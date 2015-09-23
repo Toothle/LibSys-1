@@ -1,11 +1,43 @@
 <% provide(:title, 'Find book') %>
-<h1>Find book</h1>
+<h1>Search book</h1>
 
-<%= form_for(@book) do |f| %>
-
-    <%= f.label :status %>
-    <%= f.text_field :status, class: 'form-control' %>
-
-
-    <%= f.submit "Search", class: "btn btn-primary" %>
+<%= form_tag searchbook_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
 <% end %>
+
+<table>
+  <thead>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <ul class="books">
+
+    <% if @books %>
+    <% @books.each do |book| %>
+        <tr>
+          <td><%= book.ISBN %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+          <td><%= book.status %></td>
+          <td><%= link_to 'Detail', book %></td>
+        </tr>
+    <% end %>
+    <% end %>
+
+  </ul>
+
+  </tbody>
+</table>

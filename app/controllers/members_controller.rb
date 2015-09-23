@@ -49,8 +49,11 @@ class MembersController < ApplicationController
       redirect_to(root_url) unless @member == current_member
   end
 
-  # def find_book
-  #   @book = Book.find_by_status("checkout")
-  #   redirect_to @book
-  # end
+  def find_book
+    # @book = Book.search(params[:search])
+    if params[:search]
+      @books = Book.where(:status => params[:search])
+    end
+  end
+
 end

@@ -1,4 +1,5 @@
 <h1>Member Page</h1>
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -16,14 +17,10 @@
           <%= link_to "Book list", books_path %>
         </p>
 
-      <!--<p>-->
-        <!--<% @book = Book.new %>-->
-        <!--<%= form_for(@book) do |f| %>-->
-            <!--<%= f.label :Status %>-->
-            <!--<%= f.text_field :status, class: 'form-control' %>-->
-        <!--<%= link_to "Search", Book.find_by_status(@book.status) %>-->
-        <!--<% end %>-->
-      <!--</p>-->
+      <p>
+        <%= link_to "Search book", searchbook_path %>
+      </p>
+
     </section>
   </aside>
 </div>

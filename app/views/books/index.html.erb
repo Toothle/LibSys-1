@@ -1,17 +1,12 @@
 <% provide(:title, 'All books') %>
 <h1>All books</h1>
 
-<%= will_paginate %>
-
-
-
 <table>
   <thead>
   <tr>
     <th>ISBN</th>
     <th>Title</th>
     <th>Author</th>
-    <!--<th>Description</th>-->
     <th>Status</th>
     <th></th>
     <th></th>
@@ -23,24 +18,18 @@
 
   <ul class="books">
 
-  <% @books.each do |book| %>
-      <tr>
-        <td><%= book.ISBN %></td>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <!--<td><%= book.description %></td>-->
-        <td><%= book.status %></td>
-        <td><%= link_to 'Detail', book %></td>
-      </tr>
-  <% end %>
+    <% @books.each do |book| %>
+        <tr>
+          <td><%= book.ISBN %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+          <td><%= book.status %></td>
+          <td><%= link_to 'Detail', book %></td>
+        </tr>
+    <% end %>
 
   </ul>
 
   </tbody>
 </table>
 
-
-
-
-
-<%= will_paginate %>
