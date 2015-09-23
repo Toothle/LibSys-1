@@ -1,0 +1,23 @@
+
+<% provide(:title, 'Add admin') %>
+<h1>Add members or admins</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@member) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <div class="field">
+          <%= f.label "Check to set as a admin:" %> <br />
+          <%= f.check_box :admin%> <br />
+        </div>
+
+
+        <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

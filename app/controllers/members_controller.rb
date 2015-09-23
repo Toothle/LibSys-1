@@ -2,6 +2,7 @@ class MembersController < ApplicationController
   before_action :logged_in_member, only: [:index, :edit, :update, :destroy]
   before_action :correct_member, only: [:edit, :update]
   before_action :admin_member, only: :destroy
+
   def new
     @member = Member.new
   end
@@ -17,13 +18,14 @@ class MembersController < ApplicationController
       flash[:success]="Welcome to LibSys!"
       redirect_to @member
     else
-       render 'new'
+      render 'new'
     end
   end
 
   def edit
     @member = Member.find(params[:id])
   end
+
   def update
     @member = Member.find(params[:id])
     if @member.update_attributes(member_params)
@@ -33,21 +35,22 @@ class MembersController < ApplicationController
       render 'edit'
     end
   end
-  
+
 
   def member_params
-    params.require(:member).permit(:name,:email,:password)
+    params.require(:member).permit(:name, :email, :password,:admin) #保存相应的value
   end
-  
+
   def logged_in_member
     unless logged_in?
       flash[:danger] = "Please log in"
       redirect_to login_url
     end
   end
+
   def correct_member
-      @member = Member.find(params[:id])
-      redirect_to(root_url) unless @member == current_member
+    @member = Member.find(params[:id])
+    redirect_to(root_url) unless @member == current_member
   end
 
   def index
@@ -64,5 +67,8 @@ class MembersController < ApplicationController
     redirect_to(root_url) unless current_member.admin?
   end
 
+  def add_admin
+    @member = Member.new
+  end
 
-end
+  end
