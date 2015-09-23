@@ -1,0 +1,11 @@
+<% provide(:title, 'Find book') %>
+<h1>Find book</h1>
+
+<%= form_for(@book) do |f| %>
+
+    <%= f.label :status %>
+    <%= f.text_field :status, class: 'form-control' %>
+
+
+    <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>

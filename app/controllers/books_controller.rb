@@ -41,11 +41,11 @@ class BooksController < ApplicationController
     redirect_to books_url
   end
 
-  def show_and_destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "Book deleted"
-    redirect_to books_url
-  end
+  # def show_and_destroy
+  #   Book.find(params[:id]).destroy
+  #   flash[:success] = "Book deleted"
+  #   redirect_to books_url
+  # end
 
   def book_params
     params.require(:book).permit(:ISBN, :title, :author, :description, :status)

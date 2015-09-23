@@ -48,4 +48,9 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
       redirect_to(root_url) unless @member == current_member
   end
+
+  # def find_book
+  #   @book = Book.find_by_status("checkout")
+  #   redirect_to @book
+  # end
 end
