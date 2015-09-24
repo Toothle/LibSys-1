@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923022817) do
+ActiveRecord::Schema.define(version: 20150923053148) do
 
   create_table "books", force: :cascade do |t|
     t.string   "ISBN"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150923022817) do
     t.datetime "updated_at",                 null: false
     t.string   "password"
     t.boolean  "admin",      default: false
+    t.boolean  "pre",        default: false
   end
 
 end
