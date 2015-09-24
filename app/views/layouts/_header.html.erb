@@ -17,8 +17,8 @@
               <li><%= link_to "Profile", current_member %></li>
               <li><%= link_to "Settings", edit_member_path(current_member) %></li>
 
-              <% if current_member.admin? && !current_member?(@member)%>
-                 <li><%= link_to "manage", '#'%></li>
+              <% if current_member.admin?%>
+                  <li><%= link_to "Add member&admin ", add_admin_path%></li>
 
               <% end %>
 
@@ -31,19 +31,6 @@
         <% else %>
         <li><%= link_to "Log in", login_path %></li>
         <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </ul>
     </nav>
