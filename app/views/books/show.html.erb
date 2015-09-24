@@ -35,7 +35,13 @@
              <%= link_to 'Edit', edit_book_path(@book) %>
           <%end%>   
           <% if @book.status == "available" %>
-            <%= link_to 'Checkout','#'%>
+
+
+
+              <%= link_to 'Checkout','#'%>
+
+
+
           <%end%>
           <%= link_to 'Back', books_path %>
           <%if current_member.admin?&&@book.status=="checked out"%>
