@@ -1,4 +1,10 @@
 <li id="history-<%= history.id %>">
   <span class="book"><%= link_to history.book.title, history.book %></span>
-  <span class="action"><%= history.action %></span>
+  <span class="action">
+    <%if history.action == "available" %>
+        return
+    <% else %>
+        checkout
+    <% end %>
+  </span>
 </li>

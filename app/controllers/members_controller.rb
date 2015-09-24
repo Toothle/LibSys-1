@@ -39,12 +39,12 @@ class MembersController < ApplicationController
     params.require(:member).permit(:name, :email, :password,:admin) #保存相应的value
   end
 
-  def logged_in_member
-    unless logged_in?
-      flash[:danger] = "Please log in"
-      redirect_to login_url
-    end
-  end
+  # def logged_in_member
+  #   unless logged_in?
+  #     flash[:danger] = "Please log in"
+  #     redirect_to login_url
+  #   end
+  # end
 
   def correct_member
     @member = Member.find(params[:id])

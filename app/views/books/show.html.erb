@@ -36,7 +36,23 @@
           <%end%>
 
           <% if @book.status == "available" %>
-            <%= link_to 'Checkout','#'%>
+              <%= button_to 'Checkout', histories_path(:book_id => @book.id, :act => "checkout")%>
+          <%end%>
+
+          <% myhistory =  History.where("member_id" => current_member.id)%>
+
+          <% book_found = false %>
+
+          <% if myhistory != nil %>
+              <% myhistory.each do |hist| %>
+                <% if hist.book_id == @book.id %>
+                  <% book_found = true %>
+                <% end %>
+              <% end %>
+          <% end %>
+
+          <% if @book.status == "checkout" && book_found %>
+              <%= button_to 'Return', histories_path(:book_id => @book.id, :act => "available")%>
           <%end%>
 
           <%= link_to 'Back', member_path(current_member) %>

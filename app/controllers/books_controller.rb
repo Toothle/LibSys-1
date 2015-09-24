@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @history = current_member.histories.build(member_id: current_member.id, book_id: @book.id, action: "checkout")
   end
 
   def create
