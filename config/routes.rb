@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'suggests/new'
+  get  'suggest' =>  'suggests#new'
 
   get 'se2sions/new'
 
