@@ -26,17 +26,56 @@
         </p>
       <% end %>
 
+      <p>
+        <%= link_to "Library Record", histories_path %>
+      </p>
     </section>
   </aside>
 
   <div class="col-md-8">
-    <% if @member.histories.any? %>
-        <h3>Library Record (<%= @member.histories.count %>)</h3>
-        <ol class="histories">
-          <%= render @histories %>
-        </ol>
-        <%= will_paginate @histories %>
-    <% end %>
-  </div>
 
+    <h3>Checkout Record</h3>
+    <ol class="histories">
+
+    <% allbook = [] %>
+
+    <!--get all the book related with this member-->
+    <% current_member.histories.each do |myhis| %>
+      <% allbook << myhis.book_id %>
+    <% end %>
+
+    <!--delete duplicate-->
+    <% allbook = allbook.uniq %>
+    <% flag_to_show_no_record = TRUE %>
+
+    <!--for each book, find the last record, check if it need to be returned-->
+    <% allbook.each do |book| %>
+        <% record = nil %>
+        <% current_member.histories.each do |myhis| %>
+          <% if book == myhis.book_id%>
+            <% record = myhis %>    <!--find the last record-->
+          <% end %>
+        <% end %>
+        <!--check the action of the record-->
+        <% if record.action == "checkout" %>   <!--need to be returned-->
+          <span class="book">
+            <%= link_to record.book.title, record.book %>
+          </span>
+          <span class="action">
+            <%= record.action %>
+          </span>
+          <% flag_to_show_no_record = FALSE %>
+
+        <% end %>
+    <% end %>
+
+    <!--see if all the books are returned-->
+    <% if flag_to_show_no_record %>
+        <p>
+          No record.
+        </p>
+    <% end %>
+    </ol>
+
+  </div>
 </div>

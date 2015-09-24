@@ -14,8 +14,8 @@ class HistoriesController < ApplicationController
     end
   end
 
-  def destroy
-
+  def index
+    @history = current_member.histories
   end
 
   def history_params

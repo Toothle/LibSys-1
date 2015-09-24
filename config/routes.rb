@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
   resources :books
 
-  resources :histories, only: [:create, :destroy]
+  resources :histories, only: [:create, :index]
 
   # get 'addbook' => 'books#new'
   # delete 'show_and_destroy' => '/books/:id/books#destroy'
