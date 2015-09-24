@@ -8,6 +8,7 @@ class MembersController < ApplicationController
   end
   def show
     @member = Member.find(params[:id])
+    @histories = @member.histories.paginate(page: params[:page])
   end
 
   def create
