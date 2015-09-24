@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  has_many :histories, dependent: :destroy
   validates(:ISBN, presence: true, uniqueness: true)
   validates(:title, presence: true)
   validates(:author, presence: true, length: { maximum: 30 })
