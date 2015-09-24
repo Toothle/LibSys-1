@@ -68,7 +68,7 @@ class MembersController < ApplicationController
   
   def find_book
     if params[:search]
-      @books = Book.where(:status => params[:search])
+      @books = Book.where(params[:classify] => params[:search])
     end
   end
 
