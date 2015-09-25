@@ -48,6 +48,9 @@
           <% if @book.status == "available" %>
               <%= button_to 'Checkout', histories_path(:book_id => @book.id, :act => "checkout")%>
           <%end%>
+          <% if @book.status == 'checkout' && @book.histories.last.member_id != current_member.id%>
+              <%= button_to 'Register',register_path(:id => @book.id)%>
+          <%end%>
 
           <!-- Return this book: 1.status is checkout  2.the owner in the last record of the book should be current_member-->
           <% if @book.status == "checkout" %>

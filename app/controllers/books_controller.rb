@@ -61,8 +61,18 @@ class BooksController < ApplicationController
   #  redirect_to @book
   # end
   
-  def book_params
-    params.require(:book).permit(:ISBN, :title, :author, :description, :status)
+  def register
+    @book = Book.find(params[:id])
+    if @book.update_attributes(:member_id=>current_member.id)
+       flash[:success]="Successfully registered for this book"
+    end
+    redirect_to @book
   end
+
+
+  def book_params
+    params.require(:book).permit(:ISBN, :title, :author, :description, :status, :member_id)
+  end
+
 
 end
