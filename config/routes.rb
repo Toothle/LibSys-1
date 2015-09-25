@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'suggest' => 'users/new'
+  resources :users
+
   get 'se2sions/new'
 
   root 'static_pages#home'
