@@ -6,6 +6,7 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
   end
+
   def show
     @member = Member.find(params[:id])
     @histories = @member.histories.paginate(page: params[:page])
@@ -38,13 +39,6 @@ class MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:name, :email, :password,:admin) #保存相应的value
   end
-
-  # def logged_in_member
-  #   unless logged_in?
-  #     flash[:danger] = "Please log in"
-  #     redirect_to login_url
-  #   end
-  # end
 
   def correct_member
     @member = Member.find(params[:id])
