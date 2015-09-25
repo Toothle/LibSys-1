@@ -50,10 +50,29 @@ class MembersController < ApplicationController
     @members = Member.paginate(page: params[:page])
   end
 
+
   def destroy
-    Member.find(params[:id]).destroy
-    flash[:success] = "Member deleted"
-    redirect_to members_url
+    member_history = Member.find(params[:id]).histories
+    check = 0
+    ret = 0
+
+    if member_history.any?
+      member_history.each do |history|
+        (history.action == "checkout") ? check += 1: ret += 1
+      end
+      if check > ret
+        flash[:danger] = "Cannot delete: this member has books need to be returned"
+        redirect_to members_url
+      else
+        Member.find(params[:id]).destroy
+        flash[:success] = "Member deleted"
+        redirect_to members_url
+      end
+    else
+      Member.find(params[:id]).destroy
+      flash[:success] = "Member deleted"
+      redirect_to members_url
+    end
   end
   
   def admin_member

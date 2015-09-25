@@ -42,9 +42,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "Book deleted"
-    redirect_to books_url
+    book = Book.find(params[:id])
+    if book.histories.last.action == "checkout"
+      flash[:danger] = "Cannot delete: the book has already been checked out"
+      redirect_to book_path(book)
+    else
+      book.destroy
+      flash[:success] = "Book deleted"
+      redirect_to books_url
+    end
   end
   
   def checkout
