@@ -24,60 +24,19 @@ Rails.application.routes.draw do
 
   # get '/books/:id', to: 'books#show'
   # delete '/books/:id/show_and_destroy', to: 'books#show_and_destroy'
-  resources :books
+  resources :books do
+    member do
+      get 'checkout'
+    end
+  end
 
 
   get 'addbook' => 'books#new'
   # delete 'show_and_destroy' => '/books/:id/books#destroy'
 
   #put '/books/:id/checkout' => 'books#checkout'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  resources :books do
+    resources :members
+  end
 
 end

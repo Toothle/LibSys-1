@@ -13,6 +13,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     if @member.save
+      Notifier.book_available(@member).deliver_now
       redirect_to '/members_path'
     else
       render 'new'

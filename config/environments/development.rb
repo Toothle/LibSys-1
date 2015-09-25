@@ -38,4 +38,18 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  LibSys::Application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+     :address  => "smtp.gmail.com",
+     :port     => 587,
+     :domain   => "sd.ncsu.edu",
+     :authentication => "plain",
+     :user_name => "hy.libsys.rails@gmail.com",
+     :password => "hy517libsysaplus",
+     :enable_starttls_auto=> true
+  }
+  end
+
+
 end
