@@ -1,0 +1,11 @@
+<li>
+
+  <%= link_to user.ISBN, user %>
+  <%= link_to user.title, user %>
+  <%= link_to 'Edit', edit_user_path(user) %>
+<%= link_to 'Deny', user, method: :delete,
+            data: { confirm: "You sure?" } %>
+  <%= link_to 'Approve', books_path(:ISBN => user.ISBN , :title => user.title,
+                                     :description =>user.description, :author => user.author, :status => user.status),
+     data: { confirm: "You sure?"}%>
+</li>

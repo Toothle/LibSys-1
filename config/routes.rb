@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'suggest' => 'users/new'
+  get '/members/user/new' => 'users#new'
   resources :users
 
   get 'se2sions/new'
