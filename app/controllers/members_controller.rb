@@ -62,7 +62,12 @@ class MembersController < ApplicationController
   
   def find_book
     if params[:search]
-      @books = Book.where(params[:classify] => params[:search])
+      if params[:classify] == "ISBN" || params[:classify] == "title" || params[:classify] == "author" || params[:classify] == "description" || params[:classify] == "status"
+        @books = Book.where(params[:classify] => params[:search])
+      else
+        flash[:danger] = "Can not search by #{params[:classify]}"
+        redirect_to searchbook_path
+      end
     end
   end
 
