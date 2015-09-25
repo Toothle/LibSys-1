@@ -74,7 +74,7 @@ class MembersController < ApplicationController
       redirect_to members_url
     end
   end
-  
+
   def admin_member
     redirect_to(root_url) unless current_member.admin?
   end
