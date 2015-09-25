@@ -15,8 +15,14 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     if @member.save
-      # Notifier.book_available(@member).deliver_now
-      redirect_to '/members_path'
+      if current_member != nil && current_member.admin?
+        flash[:success] = "Member #{@member.name} added"
+        redirect_to members_path
+      else
+        flash[:success] = "Welcome to Library System"
+        log_in @member
+        redirect_to @member
+      end
     else
       render 'new'
     end
@@ -93,5 +99,7 @@ class MembersController < ApplicationController
   def add_admin
     @member = Member.new
   end
+
+
 
   end
