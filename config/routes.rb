@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   get  'suggest' =>  'suggests#new'
 
+  resources :suggests
+
+
+
+
   get 'se2sions/new'
 
   root 'static_pages#home'
