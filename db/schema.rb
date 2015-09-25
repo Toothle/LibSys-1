@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20150925191011) do
     t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "member_id"
   end
+
+  add_index "books", ["member_id"], name: "index_books_on_member_id"
 
   create_table "histories", force: :cascade do |t|
     t.integer  "member_id"

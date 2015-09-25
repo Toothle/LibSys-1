@@ -29,4 +29,8 @@ Rails.application.routes.draw do
 
   resources :histories, only: [:create, :index]
 
+
+  post 'register' => 'books#register' 
+
+
 end
