@@ -28,48 +28,81 @@
           <%=@book.status%>
         </p>
 
-        <p> 
+      <!-- find the owner of the book-->
+      <% if current_member.admin? && @book.status == "checkout" %>
+        <p>
+            <strong>Owner of the book:</strong>
+            <%= Member.find(@owner).name %>
+        </p>
+      <% end %>
+
+        <p>
+          <!--admin can edit it-->
           <%if current_member.admin? %>
              <%= link_to "Delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
              <%= link_to 'Edit', edit_book_path(@book) %>
           <%end%>
 
+          <!-- checkout a book-->
           <% if @book.status == "available" %>
               <%= button_to 'Checkout', histories_path(:book_id => @book.id, :act => "checkout")%>
           <%end%>
 
-          <% myhistory =  History.where("member_id" => current_member.id)%>
-
-          <% book_found = false %>
-
-          <% if myhistory != nil %>
-              <% myhistory.each do |hist| %>
-                <% if hist.book_id == @book.id %>
-                  <% book_found = true %>
-                <% end %>
+          <!-- Return this book: 1.status is checkout  2.the owner in the last record of the book should be current_member-->
+          <% if @book.status == "checkout" %>
+              <% owner_of_the_book = @book.histories.last.member_id %>
+              <% if owner_of_the_book == current_member.id %>
+                <%= button_to 'Return', histories_path(:book_id => @book.id, :act => "available")%>
               <% end %>
-          <% end %>
-
-          <% if @book.status == "checkout" && book_found %>
-              <%= button_to 'Return', histories_path(:book_id => @book.id, :act => "available")%>
           <%end%>
 
-          <%= link_to 'Back', member_path(current_member) %>
-
-          <%if current_member.admin?&&@book.status=="checked out"%>
+          <!-- Return this book for a member: 1. admin   2. status: checkout   3. the owner of the book is not admin himself-->
+          <%if current_member.admin? && @book.status=="checkout" && @book.histories.last.member_id != current_member.id%>
              <p>
-             <%= link_to 'Return it for the Member','#'%>
+             <%= button_to "Return it for #{Member.find(@owner).name}", histories_path(:member_id => @owner, :book_id => @book.id, :act => "available")%>
              </p>
           <%end%>
+
+          <!-- help checkout for a member-->
           <%if current_member.admin? && @book.status == "available"%>
-             <p>
-             <%= link_to 'Check it out for an Member','#'%>
-             </p>
+
+              <%= form_tag histories_path(:book_id => @book.id, :act => "checkout") do %>
+              <p>
+                <%= text_field_tag :member_email, params[:member_email] %>
+                Please input member email.
+                <%= submit_tag "Check out for this member", :name => nil %>
+              </p>
+              <% end %>
+
           <%end%>
 
        </p>
 
+      <p>
+        <%= link_to 'Back to book list', books_path %>
+      </p>
+
     </section>
   </aside>
+
+  <!-- see checkout history of the book-->
+  <div class="col-md-8">
+    <% if ((current_member.admin?) && (@book.histories.any?)) %>
+        <h3>Records (<%= @book.histories.count %>)</h3>
+        <ol class="microposts">
+            <% @book.histories.each do |b_his| %>
+              <li>
+                <%= Member.find(b_his.member_id).name %>
+                <% if b_his.action == "available" %>
+                    return
+                <% else %>
+                <%= b_his.action %>
+                <% end %>
+              </li>
+            <% end %>
+        </ol>
+    <% end %>
+  </div>
+
 </div>

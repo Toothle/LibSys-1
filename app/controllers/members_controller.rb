@@ -50,10 +50,29 @@ class MembersController < ApplicationController
     @members = Member.paginate(page: params[:page])
   end
 
+
   def destroy
-    Member.find(params[:id]).destroy
-    flash[:success] = "Member deleted"
-    redirect_to members_url
+    member_history = Member.find(params[:id]).histories
+    check = 0
+    ret = 0
+
+    if member_history.any?
+      member_history.each do |history|
+        (history.action == "checkout") ? check += 1: ret += 1
+      end
+      if check > ret
+        flash[:danger] = "Cannot delete: this member has books need to be returned"
+        redirect_to members_url
+      else
+        Member.find(params[:id]).destroy
+        flash[:success] = "Member deleted"
+        redirect_to members_url
+      end
+    else
+      Member.find(params[:id]).destroy
+      flash[:success] = "Member deleted"
+      redirect_to members_url
+    end
   end
   
   def admin_member
@@ -62,7 +81,12 @@ class MembersController < ApplicationController
   
   def find_book
     if params[:search]
-      @books = Book.where(params[:classify] => params[:search])
+      if params[:classify] == "ISBN" || params[:classify] == "title" || params[:classify] == "author" || params[:classify] == "description" || params[:classify] == "status"
+        @books = Book.where(params[:classify] => params[:search])
+      else
+        flash[:danger] = "Can not search by #{params[:classify]}"
+        redirect_to searchbook_path
+      end
     end
   end
 

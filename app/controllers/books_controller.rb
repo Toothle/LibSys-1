@@ -6,10 +6,15 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @history = current_member.histories.build(member_id: current_member.id, book_id: @book.id, action: "checkout")
+
+    if current_member.admin? && @book.status == "checkout"
+      @owner = @book.histories.last.member_id
+    end
   end
 
   def create
     @book = Book.new(book_params)
+    @book.status = "available"
     if @book.save
       flash[:success] = "Book added"
       redirect_to @book
@@ -37,9 +42,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "Book deleted"
-    redirect_to books_url
+    book = Book.find(params[:id])
+    if book.histories.last.action == "checkout"
+      flash[:danger] = "Cannot delete: the book has already been checked out"
+      redirect_to book_path(book)
+    else
+      book.destroy
+      flash[:success] = "Book deleted"
+      redirect_to books_url
+    end
   end
   
   def checkout

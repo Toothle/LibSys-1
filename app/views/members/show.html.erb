@@ -27,10 +27,11 @@
       <% end %>
 
       <p>
-        <%= link_to "Library Record", histories_path %>
+        <%= link_to "Library Record", histories_path(:member_id => @member.id), method: :get %>
       </p>
     </section>
   </aside>
+
 
   <div class="col-md-8">
 

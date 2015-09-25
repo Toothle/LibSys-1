@@ -2,7 +2,7 @@
 <h1>Add Book</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@book) do |f| %>
+    <%= form_for@book do |f| %>
 
         <%= render 'shared/book_error_messages' %>
 
@@ -17,9 +17,6 @@
 
         <%= f.label :Description %>
         <%= f.text_field :description, class: 'form-control' %>
-
-        <%= f.label :Status %>
-        <%= f.text_field :status, class: 'form-control' %>
 
         <%= f.submit "Add a book", class: "btn btn-primary" %>
 
