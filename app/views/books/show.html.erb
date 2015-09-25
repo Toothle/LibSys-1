@@ -28,7 +28,16 @@
           <%=@book.status%>
         </p>
 
-        <p> 
+      <!-- find the owner of the book-->
+      <% if current_member.admin? && @book.status == "checkout" %>
+        <p>
+            <strong>Owner of the book:</strong>
+            <%= Member.find(@owner).name %>
+        </p>
+      <% end %>
+
+        <p>
+
           <%if current_member.admin? %>
              <%= link_to "Delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
@@ -55,13 +64,12 @@
               <%= button_to 'Return', histories_path(:book_id => @book.id, :act => "available")%>
           <%end%>
 
-          <%= link_to 'Back', member_path(current_member) %>
-
           <%if current_member.admin?&&@book.status=="checked out"%>
              <p>
-             <%= link_to 'Return it for the Member','#'%>
+             <%= link_to 'Return it for #{owner}','#'%>
              </p>
           <%end%>
+
           <%if current_member.admin? && @book.status == "available"%>
              <p>
              <%= link_to 'Check it out for an Member','#'%>
@@ -69,6 +77,10 @@
           <%end%>
 
        </p>
+
+      <p>
+        <%= link_to 'Back', member_path(current_member) %>
+      </p>
 
     </section>
   </aside>
