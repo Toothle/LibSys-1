@@ -10,12 +10,11 @@ class BooksController < ApplicationController
     if current_member.admin? && @book.status == "checkout"
       @owner = @book.histories.last.member_id
     end
-
-
   end
 
   def create
     @book = Book.new(book_params)
+    @book.status = "available"
     if @book.save
       flash[:success] = "Book added"
       redirect_to @book
@@ -43,9 +42,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:success] = "Book deleted"
-    redirect_to books_url
+    book = Book.find(params[:id])
+    if book.histories.last.action == "checkout"
+      flash[:danger] = "Cannot delete: the book has already been checked out"
+      redirect_to book_path(book)
+    else
+      book.destroy
+      flash[:success] = "Book deleted"
+      redirect_to books_url
+    end
   end
   
   def checkout
@@ -56,8 +61,17 @@ class BooksController < ApplicationController
    redirect_to @book
   end
   
+  def register
+    @book = Book.find(params[:id])
+    if @book.update_attributes(:member_id=>current_member.id)
+       flash[:success]="Successfully registered for this book"
+    end
+    redirect_to @book
+  end
+
+
   def book_params
-    params.require(:book).permit(:ISBN, :title, :author, :description, :status)
+    params.require(:book).permit(:ISBN, :title, :author, :description, :status, :member_id)
   end
 
 

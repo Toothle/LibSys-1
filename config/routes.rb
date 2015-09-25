@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  get  'suggest' =>  'suggests#new'
 
-  resources :suggests
 
+
+
+
+  get '/members/user/new' => 'users#new'
+  resources :users
 
 
   get 'se2sions/new'
@@ -31,6 +34,9 @@ Rails.application.routes.draw do
   resources :books
 
   resources :histories, only: [:create, :index]
+
+  post 'register' => 'books#register' 
+
 
 
 end

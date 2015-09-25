@@ -25,12 +25,22 @@
               <li><%= link_to "Settings", edit_member_path(current_member) %></li>
 
               <%if ! current_member.admin?%>
+<<<<<<< HEAD
               <li><%= link_to "Suggest a book", suggest_path %></li>
                 <%end%>
 
               <% if current_member.admin?%>
                   <li><%= link_to "Add member&admin ", add_admin_path%></li>
                   <li><%= link_to "View suggestion", '/suggests' %></li>
+=======
+                  <li><%= link_to "Suggest a book", '/members/user/new' %></li>
+              <%end%>
+
+
+              <% if current_member.admin?%>
+                  <li><%= link_to "Add member&admin ", add_admin_path%></li>
+                  <li><%= link_to "View suggestion", '/users' %></li>
+>>>>>>> dev
               <% end %>
 
               <li class="divider"></li>
