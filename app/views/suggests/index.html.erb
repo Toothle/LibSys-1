@@ -4,16 +4,10 @@
 <%= will_paginate %>
 
 <ul class="suggests">
-  <% @suggests.each do |suggest| %> <li>
+  <% @suggests.each do |suggest| %>
+  <%=render suggest%>
 
-  <tr>
-    <td><%= suggest.ISBN %></td>
-    <td><%= suggest.title %></td>
-    <td><%= suggest.author %></td>
-    <td><%= suggest.status %></td>
-    <td><%= link_to 'Edit', edit_suggest_path(current_suggest) %></td>
-  </tr>
-</li>
+
   <% end %> </ul>
 
 

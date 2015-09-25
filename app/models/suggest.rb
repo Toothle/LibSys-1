@@ -1,3 +1,3 @@
 class Suggest < ActiveRecord::Base
-  validates :ISBN, uniqueness: true
+  belongs_to :member
 end

@@ -28,13 +28,32 @@ end
   end
 
 
-  def suggest_params
-    params.require(:suggest).permit(:ISBN, :title, :author, :description, :status)
-  end
 
   def index
     @suggests = Suggest.paginate(page: params[:page])
   end
 
+  def update
+    @suggest = Suggest.find(params[:id])
+    if @suggest.update_attributes(suggest_params)
+      flash[:success] = "Successfully edit the suggested book"
+      redirect_to @suggests
+    else
+      render 'edit'
+    end
+
+  end
+
+  def destroy
+    Suggest.find(params[:id]).destroy
+    flash[:success] = "Suggest denied"
+    redirect_to suggests_url
+  end
+
+  private
+
+  def suggest_params
+    params.require(:suggest).permit(:ISBN, :title, :author, :description, :status)
+  end
 
 end
