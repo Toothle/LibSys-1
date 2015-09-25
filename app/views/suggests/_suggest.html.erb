@@ -1,11 +1,10 @@
 <li>
 
-  <td><%= link_to suggest.title, suggest %></td>
+  <%= link_to suggest.ISBN, suggest %>
 
-  <%= link_to 'Edit', edit_suggest_path(suggest) %></td>
-  <td><%= link_to 'Deny', suggest, method: :delete,
-                  data: { confirm: "You sure?" } %></td>
-  <td><%= link_to 'Approve', '#' %></td>
-
-
+  <%= link_to 'Edit', edit_suggest_path(suggest) %>
+  <%= link_to 'Deny', suggest, method: :delete,
+                  data: { confirm: "You sure?" } %>
+  <%= link_to 'Approve', '#' %>
 </li>
+

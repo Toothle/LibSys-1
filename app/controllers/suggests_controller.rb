@@ -1,6 +1,11 @@
 class SuggestsController < ApplicationController
 
 
+
+  def suggest_params
+    params.require(:suggest).permit(:ISBN, :title, :author, :description, :status)
+  end
+
   def show
 
     @suggest = Suggest.find(params[:id])
@@ -34,6 +39,7 @@ end
   end
 
   def update
+
     @suggest = Suggest.find(params[:id])
     if @suggest.update_attributes(suggest_params)
       flash[:success] = "Successfully edit the suggested book"
@@ -50,10 +56,8 @@ end
     redirect_to suggests_url
   end
 
-  private
 
-  def suggest_params
-    params.require(:suggest).permit(:ISBN, :title, :author, :description, :status)
-  end
+
+
 
 end
