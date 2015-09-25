@@ -29,7 +29,7 @@
         </p>
 
         <p> 
-          <%if current_member.admin?%>
+          <%if current_member.admin? %>
              <%= link_to "Delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
              <%= link_to 'Edit', edit_book_path(@book) %>
@@ -62,7 +62,6 @@
              <%= link_to 'Return it for the Member','#'%>
              </p>
           <%end%>
-
           <%if current_member.admin? && @book.status == "available"%>
              <p>
              <%= link_to 'Check it out for an Member','#'%>
