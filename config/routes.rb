@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-
-
-
   get '/members/user/new' => 'users#new'
   resources :users
 
@@ -36,7 +32,5 @@ Rails.application.routes.draw do
   resources :histories, only: [:create, :index]
 
   post 'register' => 'books#register' 
-
-
 
 end
