@@ -48,7 +48,9 @@
           <% if @book.status == "available" %>
               <%= button_to 'Checkout', histories_path(:book_id => @book.id, :act => "checkout")%>
           <%end%>
-          <% if @book.status == 'checkout' && @book.histories.last.member_id != current_member.id%>
+
+          <!-- register a book -->
+          <% if @book.status == 'checkout' && @book.histories.last.member_id != current_member.id && @book.member_id == nil %>
               <%= button_to 'Register',register_path(:id => @book.id)%>
           <%end%>
 

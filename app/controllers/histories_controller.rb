@@ -21,12 +21,20 @@ class HistoriesController < ApplicationController
       end
     end
 
+
+
     if flag
     if @history.save
       flash[:success] = "Success"
       redirect_to member_path(current_member)
-      @book = Book.find(params[:book_id])
-      @book.update_attribute(:status, params[:act])
+      book = Book.find(params[:book_id])
+      book.update_attribute(:status, params[:act])
+
+      if book.member_id != nil && params[:act] == "available"      # email the member who register the book
+        Notifier.book_available(Member.find(book.member_id)).deliver_now
+        book.update_attribute(:member_id, nil)
+      end
+
     else
       flash[:danger] = "Fail"
       redirect_to member_path(current_member)
