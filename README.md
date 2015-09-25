@@ -16,7 +16,7 @@ Our library system provide a platform for members to interact with books, as wel
 
 8. After clicking **details** button, Members can check out any book that is available and return the book they checked out;
 9. Members can see all the books they haven't return yet in the **Books need to be returned** section in their main page, and return the book by clikcing the book name;
-10. Members can view their checkout and return history in the **Library Record** section in their main page;
+10. Members can view their checkout and return history in the **Library Record** section in their main page;    
 ####For administrators:
 1. There is a preconfigured administrator can log in using email hy@a.b, password as 123456;
 2. Preconfigured administrator can add members in **Account->Add member&admin** and choose to add them as administrators by check the **Check to set as a admin:** checkbox. 
