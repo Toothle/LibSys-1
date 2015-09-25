@@ -53,13 +53,13 @@ class BooksController < ApplicationController
     end
   end
   
-  def checkout
-   @book =  Book.find(params[:id])
-   if @book.update_attributes(:status=>'checked out')
-      flash[:success] = "Book checked out"
-   end
-   redirect_to @book
-  end
+  # def checkout
+  #  @book =  Book.find(params[:id])
+  #  if @book.update_attributes(:status=>'checked out')
+  #     flash[:success] = "Book checked out"
+  #  end
+  #  redirect_to @book
+  # end
   
   def book_params
     params.require(:book).permit(:ISBN, :title, :author, :description, :status)
