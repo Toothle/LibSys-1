@@ -22,10 +22,62 @@
       </p>
       <% if current_member.admin? %>
         <p>
-           <%= link_to "Add a book", addbook_path %>
+           <%= link_to "Add a book", new_book_path %>
         </p>
       <% end %>
 
+      <p>
+        <%= link_to "Library Record", histories_path(:member_id => @member.id), method: :get %>
+      </p>
     </section>
   </aside>
+
+
+                         <!--if not an admin, show checkout history-->
+  <div class="col-md-8">
+
+    <h3>Books need to be returned</h3>
+    <ol class="histories">
+
+    <% allbook = [] %>
+
+    <!--get all the book related with this member-->
+    <% current_member.histories.each do |myhis| %>
+      <% allbook << myhis.book_id %>
+    <% end %>
+
+    <!--delete duplicate-->
+    <% allbook = allbook.uniq %>
+    <% flag_to_show_no_record = TRUE %>
+
+    <!--for each book, find the last record, check if it need to be returned-->
+    <% allbook.each do |book| %>
+        <% record = nil %>
+        <% current_member.histories.each do |myhis| %>
+          <% if book == myhis.book_id%>
+            <% record = myhis %>    <!--find the last record-->
+          <% end %>
+        <% end %>
+        <!--check the action of the record-->
+        <% if record.action == "checkout" %>   <!--need to be returned-->
+          <span class="book">
+            <%= link_to record.book.title, record.book %>
+          </span>
+          <span class="action">
+            <%= record.action %>
+          </span>
+          <% flag_to_show_no_record = FALSE %>
+
+        <% end %>
+    <% end %>
+
+    <!--see if all the books are returned-->
+    <% if flag_to_show_no_record %>
+        <p>
+          No record.
+        </p>
+    <% end %>
+    </ol>
+
+  </div>
 </div>

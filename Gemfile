@@ -55,6 +55,10 @@ group :test do
 end
 
 group :production do
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fd6ac23402da7f37070059f6c82e2e942cd29fe
   gem 'rails_12factor'
   gem 'unicorn'
 end

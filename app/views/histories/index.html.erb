@@ -1,0 +1,18 @@
+
+  <% if @history.any? %>
+      <h3>Library Record (<%= @history.count %>)</h3>
+      <ol class="histories">
+        <%= render @history %>
+      </ol>
+  <% else %>
+      <h3>No Record</h3>
+  <% end %>
+
+  <% if current_member.admin? %>
+      <p>
+        <%= link_to "Back to #{Member.find(@history.first.member_id).name} member page", member_path(Member.find(@history.first.member_id)) %>
+      </p>
+  <% end %>
+  <p>
+    <%= link_to "Back to my member page", member_path(current_member) %>
+  </p>
