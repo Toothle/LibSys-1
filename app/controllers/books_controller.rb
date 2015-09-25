@@ -10,6 +10,8 @@ class BooksController < ApplicationController
     if current_member.admin? && @book.status == "checkout"
       @owner = @book.histories.last.member_id
     end
+
+
   end
 
   def create

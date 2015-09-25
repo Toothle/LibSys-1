@@ -1,6 +1,6 @@
 
-  <% if current_member.histories.any? %>
-      <h3>Library Record (<%= current_member.histories.count %>)</h3>
+  <% if @history.any? %>
+      <h3>Library Record (<%= @history.count %>)</h3>
       <ol class="histories">
         <%= render @history %>
       </ol>
@@ -8,4 +8,11 @@
       <h3>No Record</h3>
   <% end %>
 
-<%= link_to "Back to member page", member_path(current_member) %>
+  <% if current_member.admin? %>
+      <p>
+        <%= link_to "Back to #{Member.find(@history.first.member_id).name} member page", member_path(Member.find(@history.first.member_id)) %>
+      </p>
+  <% end %>
+  <p>
+    <%= link_to "Back to my member page", member_path(current_member) %>
+  </p>
