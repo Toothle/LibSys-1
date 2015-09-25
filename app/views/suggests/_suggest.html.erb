@@ -1,10 +1,14 @@
 <li>
 
   <%= link_to suggest.ISBN, suggest %>
-
+  <%= link_to suggest.title, suggest %>
   <%= link_to 'Edit', edit_suggest_path(suggest) %>
   <%= link_to 'Deny', suggest, method: :delete,
                   data: { confirm: "You sure?" } %>
-  <%= link_to 'Approve', '#' %>
+
+  <!--<%= link_to 'Approve', books_path(:ISBN => @suggest.ISBN , :title => @suggest.title,
+                       :description =>@suggest.description, :author => @suggest.author, :status => @status),
+              data: { confirm: "You sure?"}%>-->
+
 </li>
 

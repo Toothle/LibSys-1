@@ -43,9 +43,9 @@ end
     @suggest = Suggest.find(params[:id])
     if @suggest.update_attributes(suggest_params)
       flash[:success] = "Successfully edit the suggested book"
-      redirect_to @suggests
+      # redirect_to suggest_path(@suggest)
     else
-      render 'edit'
+      # render 'edit'
     end
 
   end

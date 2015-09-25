@@ -70,4 +70,8 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
+  def save_suggest
+    @book = Book.new(params[:suggest_id])
+  end
+
   end
