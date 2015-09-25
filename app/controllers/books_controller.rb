@@ -10,12 +10,11 @@ class BooksController < ApplicationController
     if current_member.admin? && @book.status == "checkout"
       @owner = @book.histories.last.member_id
     end
-
-
   end
 
   def create
     @book = Book.new(book_params)
+    @book.status = "available"
     if @book.save
       flash[:success] = "Book added"
       redirect_to @book
