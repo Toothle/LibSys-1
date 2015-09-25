@@ -37,15 +37,6 @@ class MembersController < ApplicationController
   end
 
 
-  def member_params
-    params.require(:member).permit(:name, :email, :password,:admin) #保存相应的value
-  end
-
-  def correct_member
-    @member = Member.find(params[:id])
-    redirect_to(root_url) unless @member == current_member
-  end
-
   def index
     @members = Member.paginate(page: params[:page])
   end
@@ -94,4 +85,23 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
+private
+
+  def member_params
+    params.require(:member).permit(:name, :email, :password,:admin) #保存相应的value
+  end 
+
+  def logged_in_member
+    unless logged_in?
+      flash[:danger] = "Please log in."
+        redirect_to login_url
+    end
   end
+
+
+  def correct_member
+    @member = Member.find(params[:id])
+    redirect_to(root_url) unless @member == current_member
+  end
+
+end
