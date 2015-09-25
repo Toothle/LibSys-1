@@ -17,6 +17,4 @@ module Se2sionsHelper
   end
 
 
-
-
 end
