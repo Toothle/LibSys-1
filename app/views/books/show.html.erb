@@ -28,7 +28,16 @@
           <%=@book.status%>
         </p>
 
-        <p> 
+      <!-- find the owner of the book-->
+      <% if current_member.admin? && @book.status == "checkout" %>
+        <p>
+            <strong>Owner of the book:</strong>
+            <%= Member.find(@owner).name %>
+        </p>
+      <% end %>
+
+        <p>
+
           <%if current_member.admin? %>
              <%= link_to "Delete", @book, method: :delete,
                       data: { confirm: "You sure?" } %>
@@ -55,21 +64,47 @@
               <%= button_to 'Return', histories_path(:book_id => @book.id, :act => "available")%>
           <%end%>
 
-          <%= link_to 'Back', member_path(current_member) %>
-
-          <%if current_member.admin?&&@book.status=="checked out"%>
+          <%if current_member.admin? && @book.status=="checkout"%>
              <p>
-             <%= link_to 'Return it for the Member','#'%>
+             <%= button_to "Return it for #{Member.find(@owner).name}", histories_path(:member_id => @owner, :book_id => @book.id, :act => "available")%>
              </p>
           <%end%>
+
+          <!-- help checkout for a member-->
           <%if current_member.admin? && @book.status == "available"%>
-             <p>
-             <%= link_to 'Check it out for an Member','#'%>
-             </p>
+
+              <%= form_tag histories_path(:book_id => @book.id, :act => "checkout") do %>
+              <p>
+                <%= text_field_tag :member_name, params[:member_name] %>
+                Please input member name.
+                <%= submit_tag "Check out for this member", :name => nil %>
+              </p>
+              <% end %>
+
           <%end%>
 
        </p>
 
+      <p>
+        <%= link_to 'Back', member_path(current_member) %>
+      </p>
+
     </section>
   </aside>
+
+  <!-- see checkout history of the book-->
+  <div class="col-md-8">
+    <% if ((current_member.admin?) && (@book.histories.any?)) %>
+        <h3>Records (<%= @book.histories.count %>)</h3>
+        <ol class="microposts">
+            <% @book.histories.each do |b_his| %>
+              <li>
+                <%= Member.find(b_his.member_id).name %>
+                <%= b_his.action %>
+              </li>
+            <% end %>
+        </ol>
+    <% end %>
+  </div>
+
 </div>
