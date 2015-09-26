@@ -13,8 +13,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    # @book = Book.new(book_params)
-    @book = Book.new(:ISBN => params[:ISBN], :title => params[:title], :author => params[:author], :description => params[:description], :status => params[:status])
+    @book = Book.new(book_params)
+    # @book = Book.new(:ISBN => params[:ISBN], :title => params[:title], :author => params[:author], :description => params[:description], :status => params[:status])
     @book.status = "available"
     if @book.save
       flash[:success] = "Book added"

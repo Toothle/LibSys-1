@@ -2,11 +2,13 @@
 <h1>Suggested books</h1>
 <%= will_paginate %>
 
+<% if @users != nil %>
 <ul class="users">
   <% @users.each do |user| %>
       <%=render user%>
   <% end %>
 </ul>
+<% end %>
 
 
 <%= will_paginate %>
