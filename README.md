@@ -5,7 +5,7 @@ Our library system provide a platform for members to interact with books, as wel
 **Home page:** where members can sign up and log in, as well as administrator sign in.   
 **Main page:** where member or administrator can use all the features such as view history, check out and return books..etc.
 ##Instruction:
-####For members:
+####For members:heir checkout a
 1. Members can sign up using unique email;
 2. Members can log in after they sign up;
 3. Members can view their profile in Account->Profile;
@@ -16,7 +16,10 @@ Our library system provide a platform for members to interact with books, as wel
 
 8. After clicking **details** button, Members can check out any book that is available and return the book they checked out;
 9. Members can see all the books they haven't return yet in the **Books need to be returned** section in their main page, and return the book by clikcing the book name;
-10. Members can view their checkout and return history in the **Library Record** section in their main page;    
+10. Members can view tnd return history in the **Library Record** section in their main page;
+11. Members can register for a book     
+12. Members can suggest a book to wait for approval by click the **Suggest a book** from upright **"Account"** button. The memeber who post this sugggestion needs to fill information about this book. After approval from admins, the book then is available for all members. 
+
 
 ####For administrators:
 1. There is a preconfigured administrator can log in using email hy@a.b, password as 123456;
@@ -26,7 +29,7 @@ Our library system provide a platform for members to interact with books, as wel
 5. Administrators can view the full history of any book by clicking the **details** button after each book;
 6. Administrators can manage members by clicking **Members** button in the header, including delete and
 7. Administrators can view the full history of any members by clicking **Members->'Member name'->'History Record'** 
-
+8. Administrator can view the suggestion from the members. The administrator also can **edit**, **deny** or **approve** this suggestion. 
 
 Note : **Members and administrators can return to their main page by clicking Account -> Profile.**
 
