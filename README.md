@@ -7,7 +7,7 @@ Our library system provide a platform for members to interact with books, as wel
 ##Instruction:
 ####For members:
 1. Members can sign up using unique email;
-2. Members can log in after they sign up;
+2. Members will automatically log in after they sign up;
 3. Members can view their profile by clicking the **Account** button in the up right then click **Profile**;
 4. Members can edit their profile in Account->**Settings**;
 5. Members can log out in Account->**Log out**;
@@ -15,8 +15,8 @@ Our library system provide a platform for members to interact with books, as wel
 7. Members can search for books using **Search books** and input the content and the attribute that their search is based;
 
 8. After clicking **details** button, Members can check out any book that is available and return the book they checked out;
-9. Members can see all the books they haven't return yet in the **Books need to be returned** section in their main page, and return the book by clikcing the book name;
-10. Members can view tnd return history in the **Library Record** section in their main page;
+9. Members can see all the books they haven't return yet in the **Books need to be returned** section in their member page, and return the book by clikcing the book name;
+10. Members can view their return history in the **Library Record** section in their main page;
 11. Members can register for a book when it is checked out by another member using **Register** button after clicking details button of the book. And they will receive a notification email once the book is returned.
 12. Members can suggest a book to wait for approval by click the **Suggest a book** from upright **"Account"** button. The memeber who post this sugggestion needs to fill information about this book. After approval from admins, the book then is available for all members. 
 
