@@ -7,10 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @user = User.find(params[:id])
   end
-
 
   def new
     @user = User.new
@@ -18,28 +16,24 @@ class UsersController < ApplicationController
 
   def create
     @user= User.new(user_params)
+    @user.status = "available"
     if @user.save
-      flash[:success] = "Successfully send the suggestion. Please wait for
- processing. Thank you!"
+      flash[:success] = "Successfully send the suggestion. Please wait for processing. Thank you!"
       redirect_to '/'
     else
       render 'new'
     end
   end
 
-
   def edit
     @user = User.find(params[:id])
   end
-
-
 
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def update
-
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Successfully edit the suggested book"
@@ -47,7 +41,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-
   end
 
   def destroy
