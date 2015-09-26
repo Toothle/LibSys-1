@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+
+  get '/members/user/new' => 'users#new'
+  resources :users
+
+
   get 'se2sions/new'
 
   root 'static_pages#home'
@@ -26,8 +31,6 @@ Rails.application.routes.draw do
 
   resources :histories, only: [:create, :index]
 
-
   post 'register' => 'books#register' 
-
 
 end

@@ -1,0 +1,14 @@
+
+<% provide(:title, 'suggests') %>
+<h1>Suggested books</h1>
+<%= will_paginate %>
+
+<ul class="suggests">
+  <% @suggests.each do |suggest| %>
+  <%=render suggest%>
+
+
+  <% end %> </ul>
+
+
+<%= will_paginate %>
