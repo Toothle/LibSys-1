@@ -2,10 +2,10 @@
 LibSys is a course project for CSC517.
 ##Description:
 Our library system provide a platform for members to interact with books, as well as for administrators to manage members and books.   
-**Home page:** where members can sign up and log in, as well as administrator sign in.   
+**Home page:** where members can sign up and log in, as well as where administrators can sign in.   
 **Main page:** where member or administrator can use all the features such as view history, check out and return books..etc.
 ##Instruction:
-####For members:heir checkout a
+####For members:
 1. Members can sign up using unique email;
 2. Members can log in after they sign up;
 3. Members can view their profile by clicking the **Account** button in the up right then click **Profile**;
@@ -23,7 +23,7 @@ Our library system provide a platform for members to interact with books, as wel
 
 ####For administrators:
 1. There is a **preconfigured administrator** can log in using email hy@a.b, password 123456;
-2. Preconfigured administrator can add members in **Account->Add member&admin** and choose to add them as administrators by check the **Check to set as a admin:** checkbox. 
+2. Preconfigured administrator can add members in **Account->Add member&admin** and choose to add them as administrators by checking the **Check to set as a admin:** checkbox. 
 3. Administrators can do everything that members can do;
 4. Administrators can add a book using **Add book** button in their main page;
 5. Administrators can view the full history of any book by clicking the **details** button after each book;
