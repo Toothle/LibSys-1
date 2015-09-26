@@ -17,7 +17,9 @@
 /.idea/*
 /tmp
 /.idea/*
-
+/.DS_Store
 
 # Ignore Spring files.
 /spring/*.pid
+
+/.idea/*

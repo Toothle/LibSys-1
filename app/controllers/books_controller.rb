@@ -13,12 +13,17 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    # @book = Book.new(book_params)
+    @book = Book.new(:ISBN => params[:ISBN], :title => params[:title], :author => params[:author], :description => params[:description], :status => params[:status])
     @book.status = "available"
     if @book.save
       flash[:success] = "Book added"
-      redirect_to @book
+      redirect_to books_path
+      if User.find_by_ISBN(@book.ISBN) != nil
+        User.delete(User.find_by_ISBN(@book.ISBN))
+      end
     else
+      flash[:danger] = "Fail"
       render 'new'
     end
   end
@@ -45,7 +50,7 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     if book.histories.last.action == "checkout"
       flash[:danger] = "Cannot delete: the book has already been checked out"
-      redirect_to book_path(book)
+      redirect_to books_path
     else
       book.destroy
       flash[:success] = "Book deleted"
@@ -76,3 +81,4 @@ class BooksController < ApplicationController
 
 
 end
+

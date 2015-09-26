@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925185456) do
+ActiveRecord::Schema.define(version: 20150925191011) do
+
+  create_table "administrators", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "password"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "ISBN"
@@ -46,6 +54,26 @@ ActiveRecord::Schema.define(version: 20150925185456) do
     t.string   "password"
     t.boolean  "admin",      default: false
     t.boolean  "pre",        default: false
+  end
+
+  create_table "suggests", force: :cascade do |t|
+    t.string   "ISBN"
+    t.string   "title"
+    t.string   "description"
+    t.string   "author"
+    t.string   "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "ISBN"
+    t.string   "title"
+    t.string   "description"
+    t.string   "author"
+    t.string   "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

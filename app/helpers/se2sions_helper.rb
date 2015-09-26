@@ -16,7 +16,8 @@ module Se2sionsHelper
     member == current_member 
   end
 
-
-
+  def current_suggest
+    @current_suggest ||= Suggest.find_by(id: session[:user_id])
+  end
 
 end

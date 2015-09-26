@@ -46,7 +46,9 @@
 
           <!-- checkout a book-->
           <% if @book.status == "available" %>
+
               <%= button_to 'Checkout', histories_path(:book_id => @book.id, :act => "checkout")%>
+
           <%end%>
 
           <!-- register a book -->
