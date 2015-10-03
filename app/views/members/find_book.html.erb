@@ -3,9 +3,9 @@
 
 <%= form_tag searchbook_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= text_field_tag :classify, params[:classify] %>
-      Please input "ISBN", "author", "title", "description", "status"
+      <strong>Key word: </strong><%= text_field_tag :search, params[:search] %>
+      <strong>Find by: </strong><%= text_field_tag :classify, params[:classify] %>
+      (Please input "ISBN", "author", "title", "description", "status")
     </p>
     <p>
       <%= submit_tag "Search", :name => nil %>
