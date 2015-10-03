@@ -1,11 +1,17 @@
 <li>
   <%= link_to member.name, member %>
 
-  <% if member.admin? %>
+  <% if member.pre?  %>
+  <%="(Pre admin)"%>
+  <% end %>
+
+  <% if member.admin? && !member.pre? %>
       <%=  "(admin)" %>
-  <% else %>
+  <% elsif !member.admin? %>
       <%=  "(member)" %>
   <% end %>
+
+
 
 
   <% if current_member.admin? && !current_member?(member) && !member.pre? %>
