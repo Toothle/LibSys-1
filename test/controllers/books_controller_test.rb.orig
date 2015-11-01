@@ -1,0 +1,23 @@
+require 'test_helper'
+
+<<<<<<< HEAD:test/controllers/books_controller_test.rb
+class BooksControllerTest < ActionController::TestCase
+  test "should get new" do
+    get :new
+    assert_response :success
+  end
+||||||| merged common ancestors
+class SuggestsControllerTest < ActionController::TestCase
+  test "should get new" do
+    get :new
+    assert_response :success
+  end
+=======
+# class SuggestsControllerTest < ActionController::TestCase
+#   test "should get new" do
+#     get :new
+#     assert_response :success
+#   end
+>>>>>>> Update suggests_controller_test.rb:test/controllers/suggests_controller_test.rb
+
+# end
